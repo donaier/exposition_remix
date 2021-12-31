@@ -10,7 +10,7 @@ export const loader: LoaderFunction = async ({ params }) => {
   return getTrips(params.slug);
 }
 
-export default function GearSlug() {
+export default function TripSlug() {
   const gear = useLoaderData();
   return (
     <div dangerouslySetInnerHTML={{ __html: gear.html }}></div>
