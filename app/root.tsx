@@ -1,15 +1,25 @@
 import {
   Links,
   Link,
+  NavLink,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useLoaderData
 } from "remix";
 import type { MetaFunction, LinksFunction } from "remix";
 
 import globalStylesUrl from "./styles/global.css"
+
+import { getBikeStuff } from "~/bike";
+import type { BikeStuff  } from "~/bike";
+
+
+export const loader = () => {
+  return getBikeStuff();
+}
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: globalStylesUrl }];
@@ -20,6 +30,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function App() {
+  const bikestuff = useLoaderData<BikeStuff>();
+
   return (
     <html lang="en">
       <head>
@@ -29,6 +41,25 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <nav>
+          <NavLink to="/bike">bike</NavLink>
+          <ul className="bike-gear">
+            {bikestuff.gear.map(gear => (
+              <li key={gear.slug}>
+                <NavLink to={gear.slug}>{gear.title}</NavLink>
+              </li>
+            ))}
+          </ul>
+          <ul className="bike-trips">
+            {bikestuff.trips.map(trip => (
+              <li key={trip.slug}>
+                <NavLink to={trip.slug}>{trip.title}</NavLink>
+              </li>
+            ))}
+          </ul>
+          <NavLink to="/code">code</NavLink>
+          <NavLink to="/words">words</NavLink>
+        </nav>
         <Outlet />
         <ScrollRestoration />
         <Scripts />

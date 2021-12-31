@@ -27,7 +27,7 @@ function isValidBikeStuff(attributes: any): attributes is MDAttributes {
   return attributes?.title;
 }
 
-// index stuff
+// index/nav stuff
 async function getBikeGear() {
   const gearDir = await fs.readdir(bikeGearPath)
 
@@ -42,7 +42,7 @@ async function getBikeGear() {
       invariant(isValidBikeStuff(attributes), `${filename} might has bad metadata!`);
   
       return {
-        slug: 'gear/' + filename.replace(/\.md$/, ''),
+        slug: 'bike/gear/' + filename.replace(/\.md$/, ''),
         title: attributes.title
       };
     })
@@ -63,7 +63,7 @@ async function getBikeTrips() {
       invariant(isValidBikeStuff(attributes), `${filename} might has bad metadata!`);
   
       return {
-        slug: 'trips/' + filename.replace(/\.md$/, ''),
+        slug: 'bike/trips/' + filename.replace(/\.md$/, ''),
         title: attributes.title
       };
     })
