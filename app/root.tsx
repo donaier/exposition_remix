@@ -1,6 +1,5 @@
 import {
   Links,
-  Link,
   NavLink,
   LiveReload,
   Meta,
@@ -13,12 +12,12 @@ import type { MetaFunction, LinksFunction } from "remix";
 
 import globalStylesUrl from "./styles/global.css"
 
-import { getBikeStuff } from "~/bike";
-import type { BikeStuff  } from "~/bike";
+import { getBikeNav } from "~/components/bike/nav";
+import type { BikeStuff  } from "~/components/bike";
 
 
 export const loader = () => {
-  return getBikeStuff();
+  return getBikeNav();
 }
 
 export const links: LinksFunction = () => {
