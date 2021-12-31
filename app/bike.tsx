@@ -88,7 +88,7 @@ export async function getGear(slug: string) {
   return { slug, title: attributes.title, html: marked(body) };
 }
 
-export async function getTrips(slug: string) {
+export async function getTrip(slug: string) {
   const filepath = path.join(bikeTripPath, slug + ".md");
   const file = await fs.readFile(filepath);
   const { attributes, body } = parseFrontMatter(file.toString());

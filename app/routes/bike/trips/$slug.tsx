@@ -2,12 +2,12 @@ import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import invariant from "tiny-invariant";
 
-import { getTrips } from "~/bike";
+import { getTrip } from "~/bike";
 
 export const loader: LoaderFunction = async ({ params }) => {
   invariant(params.slug, "what? no slug?");
 
-  return getTrips(params.slug);
+  return getTrip(params.slug);
 }
 
 export default function TripSlug() {
