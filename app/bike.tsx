@@ -63,7 +63,7 @@ async function getBikeTrips() {
       invariant(isValidBikeStuff(attributes), `${filename} might has bad metadata!`);
   
       return {
-        slug: 'trip/' + filename.replace(/\.md$/, ''),
+        slug: 'trips/' + filename.replace(/\.md$/, ''),
         title: attributes.title
       };
     })
@@ -79,6 +79,17 @@ export async function getBikeStuff() {
 // detail stuff
 export async function getGear(slug: string) {
   const filepath = path.join(bikeGearPath, slug + ".md");
+  const file = await fs.readFile(filepath);
+  const { attributes, body } = parseFrontMatter(file.toString());
+  invariant(
+    isValidBikeStuff(attributes),
+    `Post ${filepath} is missing attributes`
+  );
+  return { slug, title: attributes.title, html: marked(body) };
+}
+
+export async function getTrips(slug: string) {
+  const filepath = path.join(bikeTripPath, slug + ".md");
   const file = await fs.readFile(filepath);
   const { attributes, body } = parseFrontMatter(file.toString());
   invariant(
