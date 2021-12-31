@@ -1,6 +1,4 @@
-import {
-  Link,
-} from "remix";
+import {Link } from "remix";
 
 export default function Index() {
   return (

@@ -27,7 +27,7 @@ export default function Bike() {
           <li key={trip.slug}>
             <Link to={trip.slug}>{trip.title}</Link>
           </li>
-        ))} 
+        ))}
       </ul>
     </div>
   );
