@@ -10,18 +10,22 @@ import {
 } from "remix";
 import type { MetaFunction, LinksFunction } from "remix";
 
-import globalStylesUrl from "./styles/global.css"
+import rootStylesUrl from "./styles/root.css"
+
+import codeSVG from "~/components/svg/code";
+import bikeSVG from "~/components/svg/bike";
 
 import { getBikeNav } from "~/components/bike/nav";
 import type { BikeStuff  } from "~/components/bike";
-
 
 export const loader = () => {
   return getBikeNav();
 }
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: globalStylesUrl }];
+  return [
+    { rel: "stylesheet", href: rootStylesUrl }
+  ];
 };
 
 export const meta: MetaFunction = () => {
@@ -41,23 +45,27 @@ export default function App() {
       </head>
       <body>
         <nav>
-          <NavLink to="/bike">bike</NavLink>
-          <ul className="bike-gear">
+          <NavLink to="/bike" className='nav-bike'>
+            {bikeSVG}
+          </NavLink>
+          <ul className="nav-list bike-gear">
             {bikestuff.gear.map(gear => (
               <li key={gear.slug}>
                 <NavLink to={gear.slug}>{gear.title}</NavLink>
               </li>
             ))}
           </ul>
-          <ul className="bike-trips">
+          <ul className="nav-list bike-trips">
             {bikestuff.trips.map(trip => (
               <li key={trip.slug}>
                 <NavLink to={trip.slug}>{trip.title}</NavLink>
               </li>
             ))}
           </ul>
-          <NavLink to="/code">code</NavLink>
-          <NavLink to="/words">words</NavLink>
+          <NavLink to="/code" className='nav-code'>
+            {codeSVG}
+          </NavLink>
+          <NavLink to="/words" className='nav-words'>words</NavLink>
         </nav>
         <Outlet />
         <ScrollRestoration />
