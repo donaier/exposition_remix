@@ -1,7 +1,7 @@
 import path from "path";
 
-export const bikeTripPath = path.join(__dirname, "..", "bike", "trips");
-export const bikeGearPath = path.join(__dirname, "..", "bike", "gear");
+export const bikeTripPath = path.join(__dirname, "..", "db_bike", "trips");
+export const bikeGearPath = path.join(__dirname, "..", "db_bike", "gear");
 
 type MDAttributes = {
   title: string;
