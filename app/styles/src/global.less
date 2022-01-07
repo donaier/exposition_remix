@@ -4,10 +4,30 @@
 @purple: #413e9f;
 @black: #041440;
 
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 body {
   background: @black;
+  font-family: 'Helvetica', sans-serif;
+
+  color: @light;
 }
 
 a {
+  color: @medium;
   text-decoration: none;
+  transition: color .3s ease;
+  &:hover {
+    color: @light;
+  }
+}
+
+p, p a, ul li, ol li, a {
+  font-size: 20px;
+  line-height: 2rem;
+  letter-spacing: 1.5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lobster', cursive;
 }

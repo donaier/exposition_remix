@@ -1,39 +1,62 @@
 nav {
-  text-align: center;
-
   a.nav-bike {
     position: absolute;
     width: 30%;
     left: 20%;
     top: 25%;
+
+    clip-path: polygon(0 0, 100% 0, 67% 100%, 0% 100%);
+
   }
   a.nav-code {
     position: absolute;
     width: 30%;
     right: 20%;
     top: 25%;
+
+    clip-path: polygon(33% 0, 100% 0, 100% 100%, 0% 100%);
   }
+  .nav-divider {
+    position: absolute;
+    left: 49%;
+    top: 25%;
+    width: 1rem;
+    height: 66%;
+    transform: rotate(18deg);
+    background: @medium;
+    border-radius: .5rem;
+  }
+
   a.nav-words {
     position: absolute;
     width: 10%;
-    left: 45%;
     top: 90%;
-    font-size: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
   }
 
   ul.nav-list {
+    position: absolute;
     list-style-type: none;
     padding: 0;
+
+    &.bike-gear {
+      top: 20%;
+    }
+    &.bike-trips {
+      top: 40%;
+    }
   }
 
   svg {
     path {
       fill: @purple;
+      transition: fill .3s ease;
     }
 
     &:hover {
       path {
-        fill: @lila;
+        fill: @medium;
       }
     }
   }

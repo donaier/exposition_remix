@@ -6,7 +6,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData
+  useLoaderData,
+  Link
 } from "remix";
 import type { MetaFunction, LinksFunction } from "remix";
 
@@ -44,29 +45,34 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <nav>
-          <NavLink to="/bike" className='nav-bike'>
-            {bikeSVG}
-          </NavLink>
-          <ul className="nav-list bike-gear">
-            {bikestuff.gear.map(gear => (
-              <li key={gear.slug}>
-                <NavLink to={gear.slug}>{gear.title}</NavLink>
-              </li>
-            ))}
-          </ul>
-          <ul className="nav-list bike-trips">
-            {bikestuff.trips.map(trip => (
-              <li key={trip.slug}>
-                <NavLink to={trip.slug}>{trip.title}</NavLink>
-              </li>
-            ))}
-          </ul>
-          <NavLink to="/code" className='nav-code'>
-            {codeSVG}
-          </NavLink>
-          <NavLink to="/words" className='nav-words'>words</NavLink>
-        </nav>
+        <header>
+          <Link to="/" className="home">exposition</Link>
+          <nav>
+            <NavLink to="/bike" className='nav-bike'>
+              {bikeSVG}
+            </NavLink>
+            <div className="nav-divider"></div>
+            <NavLink to="/code" className='nav-code'>
+              {codeSVG}
+            </NavLink>
+            <NavLink to="/words" className='nav-words'>words</NavLink>
+
+            <ul className="nav-list bike-gear">
+              {bikestuff.gear.map(gear => (
+                <li key={gear.slug}>
+                  <NavLink to={gear.slug}>{gear.title}</NavLink>
+                </li>
+              ))}
+            </ul>
+            <ul className="nav-list bike-trips">
+              {bikestuff.trips.map(trip => (
+                <li key={trip.slug}>
+                  <NavLink to={trip.slug}>{trip.title}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
