@@ -7,7 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  Link
+  Link,
+  useLocation
 } from "remix";
 import type { MetaFunction, LinksFunction } from "remix";
 
@@ -47,7 +48,7 @@ export default function App() {
       <body>
         <header>
           <Link to="/" className="home">exposition</Link>
-          <nav>
+          <nav className={useLocation().pathname.match('bike') ? 'bike': ''}>
             <NavLink to="/bike" className='nav-bike'>
               {bikeSVG}
             </NavLink>
