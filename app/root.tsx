@@ -58,6 +58,7 @@ export default function App() {
             <NavLink to="/words" className='nav-words'>words</NavLink>
 
             <ul className="nav-list bike-gear">
+              <li key="title" className="subnav-title">gear</li>
               {bikestuff.gear.map(gear => (
                 <li key={gear.slug}>
                   <NavLink to={gear.slug}>{gear.title}</NavLink>
@@ -65,6 +66,7 @@ export default function App() {
               ))}
             </ul>
             <ul className="nav-list bike-trips">
+              <li key="title" className="subnav-title">trips</li>
               {bikestuff.trips.map(trip => (
                 <li key={trip.slug}>
                   <NavLink to={trip.slug}>{trip.title}</NavLink>
