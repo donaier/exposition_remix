@@ -1,14 +1,14 @@
 import { LinksFunction, Outlet } from "remix";
 
-import bikeStylesUrl from "~/styles/bike.css"
+import codeStylesUrl from "~/styles/code.css"
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: bikeStylesUrl }
+    { rel: "stylesheet", href: codeStylesUrl }
   ];
 };
 
-export default function bike() {
+export default function code() {
   return (
     <Outlet />
   )

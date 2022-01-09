@@ -1,0 +1,35 @@
+.code {
+  a.nav-code {
+    width: 4%;
+    left: 0;
+    top: 4%;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    svg path {
+      fill: @lila;
+    }
+  }
+
+  .nav-divider {
+    opacity: 0;
+  }
+  a.nav-bike {
+    width: 4%;
+    left: -2%;
+    top: 14%;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+
+    &:hover {
+      left: 0;
+    }
+  }
+
+  a.nav-words {
+    position: absolute;
+    width: 10%;
+    top: 90%;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}

@@ -37,6 +37,13 @@ export const meta: MetaFunction = () => {
 export default function App() {
   const bikestuff = useLoaderData<BikeStuff>();
 
+  let navClass: string = '';
+  if (useLocation().pathname.match('bike')) {
+    navClass = 'bike';
+  } else if (useLocation().pathname.match('code')) {
+    navClass = 'code';
+  }
+
   return (
     <html lang="en">
       <head>
@@ -48,7 +55,7 @@ export default function App() {
       <body>
         <header>
           <Link to="/" className="home">exposition</Link>
-          <nav className={useLocation().pathname.match('bike') ? 'bike': ''}>
+          <nav className={navClass}>
             <NavLink to="/bike" className='nav-bike'>
               {bikeSVG}
             </NavLink>
@@ -56,7 +63,7 @@ export default function App() {
             <NavLink to="/code" className='nav-code'>
               {codeSVG}
             </NavLink>
-            <NavLink to="/words" className='nav-words'>words</NavLink>
+            {/* <NavLink to="/words" className='nav-words'>words</NavLink> */}
 
             <ul className="nav-list bike-gear">
               <li key="title" className="subnav-title">gear</li>
